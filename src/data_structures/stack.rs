@@ -3,12 +3,12 @@ pub mod static_stack {
     pub enum StaticStackError {
         StackOverflow,
         StackUnderflow,
-        StackEmpty
+        StackEmpty,
     }
 
     #[derive(Debug)]
     pub struct StaticStack<T> {
-        elements: Vec<T>
+        elements: Vec<T>,
     }
 
     impl<T: Sized + Copy> StaticStack<T> {
@@ -16,11 +16,9 @@ pub mod static_stack {
             if size < 1 {
                 return Err("Size cannot be less than 1");
             }
-            Ok(
-                Self {
-                    elements: Vec::with_capacity(size.try_into().unwrap())
-                }
-            )
+            Ok(Self {
+                elements: Vec::with_capacity(size.try_into().unwrap()),
+            })
         }
 
         pub fn push(&mut self, element: T) -> Result<(), StaticStackError> {

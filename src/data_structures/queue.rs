@@ -10,12 +10,14 @@ pub mod static_queue {
     // Dequeue <- Head <- [1, 2, 3, 4] <- Tail <- Enqueue
     #[derive(Debug)]
     pub struct StaticQueue<T> {
-        queue: VecDeque<T>
+        queue: VecDeque<T>,
     }
 
     impl<T: Sized + Copy> StaticQueue<T> {
         pub fn new(size: usize) -> Self {
-            Self { queue: VecDeque::with_capacity(size) }
+            Self {
+                queue: VecDeque::with_capacity(size),
+            }
         }
 
         pub fn enqueue(&mut self, el: T) -> Result<(), StaticQueueError> {
@@ -48,7 +50,7 @@ pub mod static_queue {
                 return None;
             }
 
-            self.queue.get(self.queue.len()-1)
+            self.queue.get(self.queue.len() - 1)
         }
 
         pub fn is_full(&self) -> bool {
