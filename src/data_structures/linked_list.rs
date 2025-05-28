@@ -73,20 +73,15 @@ pub mod singly_linked_list {
 
         /// Get the value of the NTH node
         pub fn get_nth(&self, idx: usize) -> Option<&T> {
-            if self.head.is_none() {
-                return None;
-            }
+            self.head.as_ref()?;
 
             let mut curr = self.head.as_ref().unwrap();
             for _ in std::iter::repeat(()).take(idx) {
-                if curr.next.is_none() {
-                    return None;
-                }
-
+                curr.next.as_ref()?;
                 curr = curr.next.as_ref().unwrap();
             }
 
-            return Some(&curr.data);
+            Some(&curr.data)
         }
 
         pub fn delete_nth(&mut self, idx: usize) -> bool {
@@ -95,7 +90,7 @@ pub mod singly_linked_list {
             }
 
             let mut curr = self.head.as_mut().unwrap();
-            for _ in std::iter::repeat(()).take(idx-1) {
+            for _ in std::iter::repeat(()).take(idx - 1) {
                 if curr.next.is_none() {
                     return false;
                 }
@@ -103,7 +98,7 @@ pub mod singly_linked_list {
                 curr = curr.next.as_mut().unwrap();
             }
 
-            curr.next = std::mem::replace(&mut curr.next.as_mut().unwrap().next, None);
+            curr.next = curr.next.as_mut().unwrap().next.take();
             true
         }
 

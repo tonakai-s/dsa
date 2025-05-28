@@ -42,7 +42,7 @@ pub mod static_queue {
                 return None;
             }
 
-            self.queue.get(0)
+            self.queue.front()
         }
 
         pub fn tail(&self) -> Option<&T> {
@@ -50,7 +50,7 @@ pub mod static_queue {
                 return None;
             }
 
-            self.queue.get(self.queue.len() - 1)
+            self.queue.back()
         }
 
         pub fn is_full(&self) -> bool {
