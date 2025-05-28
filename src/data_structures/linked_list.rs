@@ -22,7 +22,7 @@ pub mod singly_linked_list {
         }
     }
 
-    impl<T: Sized + Copy + Display> LinkedList<T> {
+    impl<T: Sized + Copy + Display + PartialEq> LinkedList<T> {
         pub fn new() -> Self {
             Self { head: None }
         }
@@ -119,6 +119,22 @@ pub mod singly_linked_list {
             }
 
             curr.next = None;
+        }
+
+        pub fn exists(&self, val: T) -> bool {
+            if self.head.is_none() {
+                return false;
+            }
+
+            let mut curr = self.head.as_ref().unwrap();
+            while curr.next.is_some() {
+                if curr.data == val {
+                    return true;
+                }
+                curr = curr.next.as_ref().unwrap();
+            }
+
+            false
         }
     }
 }

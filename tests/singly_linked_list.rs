@@ -15,6 +15,21 @@ fn get_size() {
 }
 
 #[test]
+fn exists() {
+    let mut list = singly_linked_list::LinkedList::new();
+    list.insert_end(3);
+    list.insert_end(99);
+    list.insert_end(88);
+    list.insert_end(90);
+    list.insert_end(12);
+
+    let exists = list.exists(99);
+    assert_eq!(exists, true);
+    let exists = list.exists(0000);
+    assert_eq!(exists, false);
+}
+
+#[test]
 fn get_nth() {
     let mut list = singly_linked_list::LinkedList::new();
     list.insert_end(3);
