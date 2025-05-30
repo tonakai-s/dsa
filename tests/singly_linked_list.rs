@@ -3,13 +3,13 @@ use dsa::data_structures::linked_list::singly_linked_list;
 #[test]
 fn get_size() {
     let mut list = singly_linked_list::LinkedList::new();
-    list.insert_end(3);
-    list.insert_end(99);
+    list.insert_tail(3);
+    list.insert_tail(99);
 
     let size = list.size();
     assert_eq!(size, 2);
 
-    list.insert_start(25);
+    list.insert_head(25);
     let size = list.size();
     assert_eq!(size, 3);
 }
@@ -17,11 +17,11 @@ fn get_size() {
 #[test]
 fn exists() {
     let mut list = singly_linked_list::LinkedList::new();
-    list.insert_end(3);
-    list.insert_end(99);
-    list.insert_end(88);
-    list.insert_end(90);
-    list.insert_end(12);
+    list.insert_tail(3);
+    list.insert_tail(99);
+    list.insert_tail(88);
+    list.insert_tail(90);
+    list.insert_tail(12);
 
     let exists = list.exists(99);
     assert_eq!(exists, true);
@@ -32,11 +32,11 @@ fn exists() {
 #[test]
 fn get_nth() {
     let mut list = singly_linked_list::LinkedList::new();
-    list.insert_end(3);
-    list.insert_end(99);
-    list.insert_end(88);
-    list.insert_end(90);
-    list.insert_end(12);
+    list.insert_tail(3);
+    list.insert_tail(99);
+    list.insert_tail(88);
+    list.insert_tail(90);
+    list.insert_tail(12);
 
     let nth = list.get_nth(0);
     assert!(nth.is_some());
@@ -50,11 +50,11 @@ fn get_nth() {
 #[test]
 fn delete_nth() {
     let mut list = singly_linked_list::LinkedList::new();
-    list.insert_end(3);
-    list.insert_end(99);
-    list.insert_end(88);
-    list.insert_end(90);
-    list.insert_end(12);
+    list.insert_tail(3);
+    list.insert_tail(99);
+    list.insert_tail(88);
+    list.insert_tail(90);
+    list.insert_tail(12);
 
     let nth = list.get_nth(2);
     assert_eq!(*nth.unwrap(), 88);
@@ -71,11 +71,11 @@ fn delete_nth() {
 #[test]
 fn delete_end() {
     let mut list = singly_linked_list::LinkedList::new();
-    list.insert_end(3);
-    list.insert_end(99);
-    list.insert_end(88);
-    list.insert_end(90);
-    list.insert_end(12);
+    list.insert_tail(3);
+    list.insert_tail(99);
+    list.insert_tail(88);
+    list.insert_tail(90);
+    list.insert_tail(12);
     assert_eq!(list.size(), 5);
 
     let nth = list.get_nth(4);

@@ -44,7 +44,7 @@ pub mod singly_linked_list {
             size
         }
 
-        pub fn insert_end(&mut self, val: T) {
+        pub fn insert_tail(&mut self, val: T) {
             let node = Box::new(Node::new(val));
 
             if self.head.is_none() {
@@ -60,7 +60,7 @@ pub mod singly_linked_list {
             curr.next = Some(node);
         }
 
-        pub fn insert_start(&mut self, val: T) {
+        pub fn insert_head(&mut self, val: T) {
             let head = self.head.as_mut().unwrap();
             // New node
             let node = Box::new(Node::new(val));
@@ -131,5 +131,40 @@ pub mod singly_linked_list {
 
             false
         }
+    }
+}
+
+pub mod doubly_linked_list {
+    use std::fmt::Display;
+
+    /// Front -> head -> 1 -> 2 -> 3 -> tail -> End
+    #[derive(Debug)]
+    pub struct Node<T> {
+        data: T,
+        next: Option<Box<Node<T>>>,
+        prev: Option<Box<Node<T>>>
+    }
+
+    impl<T: Sized + Copy + Display + PartialEq> Node<T> {
+        pub fn new(val: T) -> Self {
+            Self { data: val, next: None, prev: None }
+        }
+
+        // pub fn size(&self) -> usize {
+        //     if self.head.is_none() {
+        //         return 0;
+        //     }
+
+        //     let mut size: usize = 1;
+
+        //     let mut curr = self.head.as_ref().unwrap();
+
+        //     while curr.next.is_some() {
+        //         size += 1;
+        //         curr = curr.next.as_ref().unwrap();
+        //     }
+
+        //     size
+        // }
     }
 }
